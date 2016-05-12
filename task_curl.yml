@@ -1,0 +1,6 @@
+platform: linux
+image: docker:///tutum/curl
+inputs:
+  - name: my-ci-repository
+run:
+  path: my-ci-repository/task_curl.sh

@@ -1,0 +1,19 @@
+resources:
+- name: my-ci-repository
+  type: git
+  source:
+    uri: https://github.com/takuan-osho/sample-repository.git
+
+- name: my-timer
+  type: time
+  source:
+    interval: 2m
+jobs:
+- name: recurring-curl
+  serial: true
+  plan:
+  - get: my-ci-repository
+  - get: my-timer
+    trigger: true
+  - task: hello-world
+    file: my-ci-repository/task_curl.yml
